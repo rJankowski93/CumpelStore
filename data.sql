@@ -103,6 +103,11 @@ INSERT INTO `cart_item` (`Id`, `Product_Id`, `Quantity`, `Total_Price`, `Cart_Id
 (27, 74, 3, 2400, 30),
 (28, 74, 2, 1600, 31);
 
+INSERT INTO `user` (`Id`, `Login`, `Password`, `Enabled`) VALUES
+(1, 'rafi', 'asdasdad', 1),
+(2, 'rafi2', 'asdasdad2', 0),
+(3, 'rafi3', 'asdasdad3', 0);
+
 INSERT INTO `customer` (`Id`, `Firstname`, `Lastname`, `email`, `Registration_Date`, `User_Id`, `Address_Id`) VALUES
 (31, 'Burton', 'Guthrie', '', '2016-07-25', 1, 8),
 (32, 'Aladdin', 'Alvarado', '', '2016-07-25', 2, 9);
@@ -121,10 +126,7 @@ INSERT INTO `new_order` (`Id`, `Date`, `State`, `Customer_Id`, `Cart_Id`) VALUES
 
 
 
-INSERT INTO `user` (`Id`, `Login`, `Password`, `Enabled`) VALUES
-(1, 'rafi', 'asdasdad', 1),
-(2, 'rafi2', 'asdasdad2', 0),
-(3, 'rafi3', 'asdasdad3', 0);
+
 
 INSERT INTO `user_role` (`Id`, `USER_ID`, `Role`) VALUES
 (2, '1', 'ROLE_ADMIN'),
