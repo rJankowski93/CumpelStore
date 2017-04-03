@@ -15,7 +15,7 @@ public class CartData implements Serializable {
     private String id;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID", referencedColumnName = "ID")
+    @JoinColumn(name = "CART_ID", referencedColumnName = "ID")
     private List<CartItemData> cartItems;
 
     @Column(name = "GRAND_TOTAL")

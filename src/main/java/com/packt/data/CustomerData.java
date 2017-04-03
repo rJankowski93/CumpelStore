@@ -35,7 +35,7 @@ public class CustomerData implements Serializable {
     @Column(name = "ADDRESS_ID", insertable = false, updatable = false)
     private Long addressId;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.REFRESH,CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "ADDRESS_ID")
     private AddressData address;
 

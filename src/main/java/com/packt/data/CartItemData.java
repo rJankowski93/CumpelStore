@@ -27,7 +27,7 @@ public class CartItemData implements Serializable {
     @Column(name = "CART_ID", insertable = false, updatable = false)
     private Long cartId;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CART_ID")
     private CartData cart;
 
