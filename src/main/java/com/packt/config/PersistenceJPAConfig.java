@@ -21,7 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.packt.data")
+@EnableJpaRepositories(basePackages = "com.packt")
 @PropertySource("/WEB-INF/databaseSettings.properties")
 public class PersistenceJPAConfig {
 

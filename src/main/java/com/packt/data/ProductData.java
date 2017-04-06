@@ -7,6 +7,13 @@ import java.io.Serializable;
 @Table(name = "PRODUCT")
 public class ProductData implements Serializable {
 
+    public interface Category {
+        String PHONE = "Phone";
+        String TABLET = "Tablet";
+        String LAPTOP = "Laptop";
+        String MONITOR = "Monitor";
+    }
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
