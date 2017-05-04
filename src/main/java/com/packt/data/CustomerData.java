@@ -6,7 +6,12 @@ import java.util.Date;
 
 @Entity
 @Table(name = "CUSTOMER")
-public class CustomerData implements Serializable {
+@AttributeOverrides({
+        @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
+        @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
+        @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
+})
+public class CustomerData extends Audit implements Serializable {
 
     @Id
     @Column(name = "ID")
@@ -38,6 +43,16 @@ public class CustomerData implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ADDRESS_ID")
     private AddressData address;
+
+    @PrePersist
+    public void onPrePersist() {
+        setAuditCD(new Date());
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        setAuditMD(new Date());
+    }
 
     public CustomerData() {
         super();

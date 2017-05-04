@@ -2,10 +2,16 @@ package com.packt.data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "PRODUCT")
-public class ProductData implements Serializable {
+@AttributeOverrides({
+        @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
+        @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
+        @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
+})
+public class ProductData extends Audit implements Serializable {
 
     public interface Category {
         String PHONE = "Phone";
@@ -45,6 +51,16 @@ public class ProductData implements Serializable {
 
     @Column(name = "IS_PROMOTION")
     private Boolean isPromotion;
+
+    @PrePersist
+    public void onPrePersist() {
+        setAuditCD(new Date());
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        setAuditMD(new Date());
+    }
 
     public ProductData() {
         super();
