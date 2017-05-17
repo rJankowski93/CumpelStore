@@ -3,12 +3,16 @@ package com.packt.controller;
 
 import com.packt.dao.ProductDAO;
 import com.packt.dao.UserDAO;
+import com.packt.data.CustomerData;
 import com.packt.data.ProductData;
+import com.packt.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -19,6 +23,9 @@ public class BasicController {
 
     @Autowired
     ProductDAO productDAO;
+
+    @Autowired
+    CustomerService customerService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
@@ -35,5 +42,18 @@ public class BasicController {
         ModelAndView model = new ModelAndView();
         model.setViewName("General/Login");
         return model;
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        CustomerData customer = new CustomerData();
+        model.addAttribute("customer", customer);
+        return "General/Registration";
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registrationProcess(@ModelAttribute("customer")  CustomerData customer, @RequestParam("matchingPassword") String matchingPassword) {
+        customerService.registrationCustomer(customer, matchingPassword);
+        return "redirect:/login";
     }
 }

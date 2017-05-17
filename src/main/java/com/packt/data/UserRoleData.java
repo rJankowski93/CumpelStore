@@ -7,6 +7,12 @@ import java.io.Serializable;
 @Table(name = "USER_ROLE")
 public class UserRoleData implements Serializable {
 
+    public interface Role {
+        String USER = "USER";
+        String ADMIN = "ADMIN";
+    }
+
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +27,14 @@ public class UserRoleData implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private UserData user;
+
+    public UserRoleData() {
+    }
+
+    public UserRoleData(String role, UserData user) {
+        this.role = role;
+        this.user = user;
+    }
 
     public int getId() {
         return id;
