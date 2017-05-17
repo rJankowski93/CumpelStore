@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
+
+<section>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>
+                <spring:message code="labels.cumpelstore.title" />
+            </h1>
+        </div>
+    </div>
+    <div class="pull-right" style="padding-right: 50px">
+        <a href="?language=pl"> <spring:message code="labels.language.pl" /></a> | <a href="?language=en"> <spring:message code="labels.language.en" /></a>
+    </div>
+</section>
+
 <div class="container">
     <div class="col-md-4 col-md-offset-4">
         <div class="panel panel-default">
@@ -22,7 +36,7 @@
                             <input class="form-control" name='password' type="password" value="">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </div>
-                        <input class="btn btn-lg btn-success btn-block" type="submit" value="Zaloguj">
+                        <input class="btn btn-lg btn-success btn-block" type="submit" value="<spring:message code="labels.login" />">
                     </fieldset>
                 </form>
             </div>
