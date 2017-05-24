@@ -12,11 +12,10 @@ public class UserRoleData implements Serializable {
         String ADMIN = "ADMIN";
     }
 
-
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "ROLE")
     private String role;
@@ -36,17 +35,18 @@ public class UserRoleData implements Serializable {
         this.user = user;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getRole() {
         return role;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setRole(String role) {
         this.role = role;

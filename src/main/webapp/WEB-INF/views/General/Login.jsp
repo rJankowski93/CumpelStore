@@ -22,7 +22,11 @@
         <a href="?language=pl"> <spring:message code="labels.language.pl" /></a> | <a href="?language=en"> <spring:message code="labels.language.en" /></a>
     </div>
 </section>
-
+<c:if test="${message!=null}">
+    <div class="alert alert-info text-center" >
+        <strong>Info!</strong> ${message}
+    </div>
+</c:if>
 <div class="container">
     <div class="col-md-4 col-md-offset-4">
         <div class="panel panel-default">
