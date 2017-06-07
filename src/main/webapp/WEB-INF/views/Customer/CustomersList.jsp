@@ -22,15 +22,20 @@
                     <p>${customer.address.street} ${customer.address.houseNumber}</p>
                     <p>
                         <a href=" <spring:url value="/customers/customer?id=${customer.id}" /> "
-                           class="btn btn-primary"> <span class="glyphicon-info-sign glyphicon"/></span> Details</a>
+                           class="btn btn-primary"> <span class="glyphicon-info-sign glyphicon"/></span>
+                            <spring:message code="labels.details"/></a>
                         <a href=" <spring:url value="/customers/removeCustomer?id=${customer.id}" /> "
-                           class="btn btn-danger"> <span class="glyphicon-info-sign glyphicon"/></span> Remove</a>
+                           class="btn btn-danger"> <span class="glyphicon-info-sign glyphicon"/></span>
+                            <spring:message code="labels.remove"/></a>
+                        <a href=" <spring:url value="/customers/modifyCustomer?id=${customer.id}" /> "
+                           class="btn btn-danger"> <span class="glyphicon glyphicon-pencil glyphicon"/></span>
+                            <spring:message code="labels.modify"/></a>
+
                     </p>
                 </div>
             </div>
         </c:forEach>
     </div>
 </section>
-
 </body>
 </html>

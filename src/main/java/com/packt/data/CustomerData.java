@@ -1,5 +1,7 @@
 package com.packt.data;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -43,6 +45,9 @@ public class CustomerData extends Audit implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ADDRESS_ID")
     private AddressData address;
+
+    @Transient
+    private MultipartFile avatar;
 
     @PrePersist
     public void onPrePersist() {
@@ -128,6 +133,14 @@ public class CustomerData extends Audit implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public MultipartFile getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(MultipartFile avatar) {
+        this.avatar = avatar;
     }
 }
 

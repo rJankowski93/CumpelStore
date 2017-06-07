@@ -43,6 +43,10 @@
             <p>
                 <strong>houseNumber</strong>: ${customer.address.houseNumber}
             </p>
+            <div class="col-md-5">
+                <img src="<c:url value="/resources/images/customers/${customer.id}.jpg"></c:url>" alt="image"
+                     style="width: 50%"/>
+            </div>
             <p>
                 <a class="btn btn-default" href="<spring:url value="/customers" />"> <span
                         class="glyphicon glyphicon-hand-left"></span> Return
